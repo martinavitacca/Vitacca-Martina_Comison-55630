@@ -1,0 +1,49 @@
+{% extends "aplicacion/base.html" %} 
+{% load static %}
+
+
+{% block titulo %}
+
+<h1>Reviews</h1>
+<span class="subheading">評価する</span>
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+    <div class="d-grid gap-2 col-8 mx-auto mb-5">
+        <h2 class="mb-4 text-center text-dark">Read some reviews of titles given by users</h2>
+    </div>
+
+   
+    {% for review in review_list %}
+       
+        <div class="list-group border border-5 px-4 py-4 mb-5">           
+            <div class="d-flex w-100 mt-2 justify-content-between">
+                <h4 class="mb-1 text-primary">{{ review.username }}</h4>
+                <a href="{% url 'edit_review' review.id %}" class="btn btn-primary rounded" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </a>       
+            </div>
+            <div class="d-flex w-100 mt-2 justify-content-between">
+                <h6 class="mb-1">Manga: <span class="text-muted">{{ review.title }}</span></h6>
+                <a href="{% url 'delete_review' review.id %}" class="btn btn-outline-danger rounded-pill" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                    <i class="fa-solid fa-trash"></i>
+                </a> 
+            </div>
+                        
+            <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1 ms-4">{{ review.comment }}</p>  
+                
+            </div>
+
+            <div class="d-flex w-100 mt-2 justify-content-end">
+                <h6 class="mb-1 ms-4">Score: <span class="text-muted">{{ review.rating }}</span></h6>   
+            </div>
+        </div>  
+
+    {% endfor %}
+
+           
+{% endblock contenido %}

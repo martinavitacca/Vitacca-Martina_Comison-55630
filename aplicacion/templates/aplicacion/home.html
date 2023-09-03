@@ -1,0 +1,95 @@
+{% extends "aplicacion/base.html" %} 
+{% load static %}
+
+
+{% block titulo %}
+
+<h1>THERE'S ALWAYS TIME TO READ...</h1>
+<span class="subheading">Keep track of your manga readings with us!</span>
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    
+        {% comment %} Categoría 1 {% endcomment %}
+        <div class="col">
+            <div class="card border border-white">
+                <!-- Image-->
+                <img class="card-img-top" src="{% static 'aplicacion/assets/img/seinen.jpg' %}">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Name-->
+                        <h5 class="fw-bolder">Seinen</h5>
+                    </div>
+                </div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center">
+                        <a class="btn btn-outline-secondary mt-auto" href="{% url 'seinen' %}">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+                   
+        {% comment %} Categoría 2 {% endcomment %}
+        <div class="col mb-5">
+            <div class="card border border-white">
+                <!-- Image-->
+                <img class="card-img-top" src="{% static 'aplicacion/assets/img/shounen.jpeg' %}" />
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Name-->
+                        <h5 class="fw-bolder">Shounen</h5>
+                    </div>
+                </div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center">
+                        <a class="btn btn-outline-dark mt-auto" href="{% url 'shounen' %}">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+              
+        {% comment %} Categoría 3 {% endcomment %}
+        <div class="col mb-5">
+            <div class="card border border-white">
+                <!-- Image-->
+                <img class="card-img-top" src="{% static 'aplicacion/assets/img/manhwa.webp' %}" />
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Name-->
+                        <h5 class="fw-bolder">Korean (Manhwa)</h5>
+                    </div>
+                </div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center">
+                        <a class="btn btn-outline-primary mt-auto" href="{% url 'manhwa' %}">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>            
+
+        {% comment %} Categoría 4 {% endcomment %}
+        <div class="col mb-5">
+            <div class="card border border-white">
+                <!-- Image-->
+                <img class="card-img-top" src="{% static 'aplicacion/assets/img/shoujo.jpg' %}" />
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Name-->
+                        <h5 class="fw-bolder">Shoujo</h5>
+                    </div>
+                </div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center">
+                        <a class="btn btn-outline-danger mt-auto" href="{% url 'shoujo' %}">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>   
+                              
+    </div>
+
+{% endblock contenido %}

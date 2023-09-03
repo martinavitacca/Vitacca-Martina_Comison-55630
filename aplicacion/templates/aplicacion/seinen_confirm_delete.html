@@ -1,0 +1,30 @@
+{% extends "aplicacion/base.html" %} 
+{% load static %}
+
+{% block titulo %}
+
+<h1>Sienen</h1>
+<span class="subheading">青年漫画</span>
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+    <form action="" method="POST">
+       {% csrf_token %}
+       <div class="d-flex w-100 mt-2 justify-content-start">
+                <a href="{% url 'seinen' %}" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .80rem;">
+                    <i class="fa-solid fa-chevron-left"></i> GO BACK
+                </a>   
+            </div>   
+        <div class="d-grid gap-2 col-8 mx-auto">
+            <h1 class="mb-4 text-center text-dark">Are you sure you want to delete <span class="text-primary">{{ object }}</span> from the database?</h1>
+            <h6 class="mb-4 text-center text-danger">You won't be able to restore it</h6>
+            <button class="btn btn-outline-danger btn-sm mt-4" type="submit">
+                Yes
+            </button>   
+        </div>
+    </form>                  
+
+{% endblock contenido %}

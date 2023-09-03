@@ -1,0 +1,56 @@
+{% extends "aplicacion/base.html" %} 
+{% load static %}
+
+
+{% block titulo %}
+
+<h1>Shoujo</h1>
+<span class="subheading">少女漫画</span>
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+    <form action="/found_shoujo" method="get">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" name="buscar" id="buscar" class="form-control" placeholder="Search">
+            <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </form>
+
+   
+    {% for manga in mangas %}
+
+        <div class="d-flex w-100 mt-2 justify-content-end">
+            <a href="{% url 'update_shoujo' manga.id %}" class="btn btn-primary rounded" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                <i class="fa-regular fa-pen-to-square"></i> Edit
+            </a>       
+            <a href="{% url 'delete_shoujo' manga.id %}" class="btn btn-outline-danger rounded-pill ms-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                <i class="fa-solid fa-trash"></i> Delete
+            </a>    
+        </div>
+
+        <div class="list-group mb-5">           
+            <div class="d-flex w-100 mt-2 justify-content-between">
+                <h4 class="mb-1 text-primary">{{ manga.title }}</h4>
+                <h6 class="mb-1 ">Chapter {{ manga.chapter }}</h6>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-4 text-primary">{{ manga.japanese_title }}</h5>
+                <h6 class="mb-1">Volume {{ manga.volume }}</h6>   
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+                <img class="w-25" src="{{ manga.image.url }}">
+                <p class="mb-1 ms-4">{{ manga.content }}</p>   
+            </div>
+            <h6 class="mt-2">Status: <span class="text-success">{{ manga.current_estado }}</span></h6> 
+            <p class="mb-1"><span class="text-secondary"><b>Author/s: </b></span>{{ manga.authors }}</p>
+            <small class="text-muted">Publication year: {{ manga.publication_date }} </small>
+        </div>
+
+    {% endfor %}
+                    
+
+{% endblock contenido %}
